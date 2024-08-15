@@ -9,3 +9,5 @@ export const SETUSER = "SETUSER";
 //PRODUCTS
 export const CREATE_NEW_PRODUCTS = "CREATE_NEW_PRODUCTS";
 export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
+export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const GET_PRODUCT = "GET_PRODUCT";

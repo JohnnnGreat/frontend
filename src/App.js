@@ -38,7 +38,8 @@ function App() {
             <Route path="" element={<ProfileOverview />} />
             <Route path="orders" element={<MyOrders />} />
             <Route path="settings" element={<AccountSetting />} />
-            <Route path="products" element={<Product />}>
+            <Route path="products">
+              <Route path="" element={<Product />} />
               <Route path="add" element={<AddProduct />} />
             </Route>
           </Route>

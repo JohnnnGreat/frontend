@@ -23,30 +23,36 @@ const Layout = ({ children }) => {
       setIsAuthenticated(false);
     }
   }, [user]);
+  const cart = useSelector((state) => state.carts?.cart?.items);
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
       <header className="bg-gray-800 text-white">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div>
+        <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+          <div className="flex items-center mb-4 md:mb-0">
             <Link to="/" className="text-2xl font-bold">
               E-Commerce
             </Link>
           </div>
-          <nav className="flex space-x-4">
+          <nav className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
             <Link to="/" className="hover:text-gray-400">
               Home
             </Link>
             <Link to="/products" className="hover:text-gray-400">
               Products
             </Link>
-            <Link to="/cart" className="hover:text-gray-400">
+            <Link to="/cart" className="hover:text-gray-400 relative">
+              {cart?.length > 0 && (
+                <span className="bg-red-500 w-[15px] h-[15px] absolute top-0 right-[-1rem] text-[.6rem] rounded-full flex items-center justify-center">
+                  {cart?.length}
+                </span>
+              )}
               Cart
             </Link>
 
             {isAuthenticated ? (
-              <div className="flex space-x-4 items-center">
+              <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-center">
                 <Link to="/profile" className="hover:text-gray-400">
                   {user?.name || "Profile"}
                 </Link>
@@ -55,7 +61,7 @@ const Layout = ({ children }) => {
                 </button>
               </div>
             ) : (
-              <div className="flex space-x-4">
+              <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
                 <Link to="/login" className="hover:text-gray-400">
                   Login
                 </Link>

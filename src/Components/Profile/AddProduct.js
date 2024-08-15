@@ -2,23 +2,21 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { addProductAction } from "../../Redux/Actions/ProductActions";
 import { useDispatch } from "react-redux";
 import { uploadImagesService } from "../../Services/ProductService";
+import { Loader2 } from "lucide-react";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
+  const [isAddingProduct, setIsAddingProduct] = useState(false);
+  const [isUploadingImages, setIsUploadingImages] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [uploadedImages, setUploadedImages] = useState([]);
 
   const formSchema = z.object({
@@ -46,6 +44,7 @@ const AddProduct = () => {
 
   const form = useForm({
     resolver: zodResolver(formSchema),
+
     defaultValues: {
       name: "",
       description: "",
@@ -58,11 +57,14 @@ const AddProduct = () => {
   });
 
   const handleSubmit = async (values) => {
-    console.log(values);
-    await dispatch(addProductAction(values));
+    setIsAddingProduct(true);
+    await dispatch(addProductAction(values, navigate, message));
+    form.reset();
+    setIsAddingProduct(false);
   };
 
   const handleImageUpload = async (event) => {
+    setIsUploadingImages(true);
     const files = event.target.files;
     const formData = new FormData();
 
@@ -74,16 +76,17 @@ const AddProduct = () => {
 
     setUploadedImages(response.fileUrls);
     form.setValue("images", response?.fileUrls);
+    message.success(response.fileUrls.length + " Images Added Succesfully");
+    setIsUploadingImages(false);
   };
 
-  const onInvalid = (errors) => console.log(uploadedImages);
   return (
     <div className="mt-[1rem] p-[1.4rem] ">
       <hr />
       <h1 className="font-bold text-2xl mt-[1rem] mb-[.9rem]">Add A New Product</h1>
       <div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit, onInvalid)} className="space-y-2">
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-2">
             <FormField
               control={form.control}
               name="name"
@@ -105,7 +108,7 @@ const AddProduct = () => {
                 <FormItem>
                   <FormLabel className="text-[.9rem] font-semibold">Description</FormLabel>
                   <FormControl>
-                    <Input placeholder="description" {...field} />
+                    <Input placeholder="Description" {...field} />
                   </FormControl>
 
                   <FormMessage />
@@ -134,7 +137,7 @@ const AddProduct = () => {
                   <FormItem>
                     <FormLabel className="text-[.9rem] font-semibold">Brand </FormLabel>
                     <FormControl>
-                      <Input placeholder="brand" {...field} />
+                      <Input placeholder="Brand" {...field} />
                     </FormControl>
 
                     <FormMessage />
@@ -171,27 +174,37 @@ const AddProduct = () => {
                   </FormItem>
                 )}
               />
+            </div>
+            <div className="flex w-full items-center gap-3">
               <FormField
                 control={form.control}
                 name="images"
                 render={() => (
-                  <FormItem>
-                    <FormLabel className="text-[.9rem] font-semibold">Upload Images</FormLabel>
+                  <FormItem className="w-full">
+                    <FormLabel className="text-[.9rem] font-semibold ">Upload Images</FormLabel>
                     <FormControl>
-                      <Input type="file" multiple onChange={handleImageUpload} />
+                      <Input className="flex-1" type="file" multiple onChange={handleImageUpload} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              {isUploadingImages && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             </div>
             <div className="flex gap-2 mt-2">
               {uploadedImages.map((url, index) => {
-                return <img src={url} className="w-[100px] h-[100px] object-cover rounded" />;
+                return (
+                  <img
+                    src={url}
+                    alt="product display"
+                    className="w-[100px] h-[100px] object-cover rounded"
+                  />
+                );
               })}
             </div>
-            <Button className="w-full mt-[1rem]" type="submit">
-              Submit
+            <Button isDisables={isAddingProduct} className="w-full mt-[1rem]" type="submit">
+              {isAddingProduct && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              Add Product
             </Button>
           </form>
         </Form>

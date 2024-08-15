@@ -27,9 +27,12 @@ export const signup = (credentials, message, navigate) => async (dispatch) => {
     const { data } = await signupService(credentials);
 
     dispatch({
-      type: AUTH,
-      payload: data,
+      type: LOGIN_SUCCESS,
+      payload: data.user,
+      token: data.token,
     });
+    const token = data.token;
+    localStorage.setItem("token", JSON.stringify(token));
     message.success(data.message);
     navigate("/");
   } catch (error) {

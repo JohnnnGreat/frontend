@@ -33,6 +33,25 @@ export const getProductsById = async (id) => {
       Authorization: `Bearer ${token}`,
     },
   });
+  return response.data;
+};
 
+export const getAllProductsService = async () => {
+  const response = await axios.get(`${API_URL}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
+
+export const getProductService = async (id) => {
+  const response = await axios.get(`${API_URL}/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 };
