@@ -14,11 +14,11 @@ import {
 } from "../Components/ui/form";
 import { Input } from "../Components/ui/input";
 import { useDispatch, useSelector } from "react-redux";
-import { login, signup } from "../Redux/Actions/AuthActions";
 import { Button } from "../Components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { message } from "antd";
+import { signup } from "../Components/Auth/Login/actions";
 
 const SignupPage = () => {
   const dispatch = useDispatch();

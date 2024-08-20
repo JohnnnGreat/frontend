@@ -1,9 +1,9 @@
 // src/Components/Layout.js
 
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../Redux/Actions/AuthActions';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../Auth/Login/actions";
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
             {isAuthenticated ? (
               <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 items-center'>
                 <Link to='/profile' className='hover:text-gray-400'>
-                  {user?.name || 'Profile'}
+                  {user?.name || "Profile"}
                 </Link>
                 <button onClick={handleLogout} className='hover:text-gray-400 focus:outline-none'>
                   Logout
