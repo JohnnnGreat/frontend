@@ -9,12 +9,12 @@ import { getProductById } from "../Products/ProductDetails/action";
 const Product = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.products.products);
-  console.log(products);
+
   const { user } = useSelector(state => state.account);
   useEffect(() => {
     dispatch(getProductById(user._id, message));
-  }, [user]);
-  console.log(products);
+  }, [user, dispatch]);
+
   return (
     <div className='overflow-auto w-full'>
       <div>
@@ -41,7 +41,7 @@ const Product = () => {
             </Link>
           </div>
         ) : (
-          <div className='grid grid-cols-3 gap-[1rem] p-[1rem]'>
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-[1rem] p-[1rem]'>
             {products?.map(product => (
               <ProductCard product={product} />
             ))}

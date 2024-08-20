@@ -69,7 +69,7 @@ const AccountSetting = () => {
       <h1 className='text-[1.6rem] font-semibold'>Account Settings</h1>
       <hr className='my-[.5rem]' />
       <div className='shipping-grid'>
-        <div>
+        <div className='w-full'>
           <h1 className='my-[.8rem]'>Account Information</h1>
 
           <Form {...userForm}>

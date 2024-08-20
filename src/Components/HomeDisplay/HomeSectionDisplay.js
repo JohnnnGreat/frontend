@@ -18,10 +18,10 @@ const HomeSectionDisplay = () => {
   return (
     // TODO: Fetch products from Redux store on mount
 
-    <div className='w-full'>
+    <div className='w-full p-3'>
       <h1 className='text-[1.6rem] font-semibold'>All Products</h1>
       <hr className='my-[1rem]' />
-      <div className='grid grid-cols-3 gap-3'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-3'>
         {products.map(product => (
           <ProductCard product={product} />
         ))}

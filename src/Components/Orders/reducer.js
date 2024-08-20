@@ -15,6 +15,12 @@ export const orderReducers = (state = initialState, action) => {
         ...state,
         orders: action.payload
       };
+
+    case "GET_SEARCHED_ORDER":
+      return {
+        ...state,
+        orders: action.payload
+      };
     default:
       return state;
   }

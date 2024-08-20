@@ -23,7 +23,6 @@ export const addOrderAction = (orderBody, message) => async dispatch => {
 };
 
 export const getOrdersByUser = () => async dispatch => {
-  console.log(token);
   try {
     const response = await axios.get(`${API_URL}/myorders`, {
       headers: {
@@ -34,5 +33,26 @@ export const getOrdersByUser = () => async dispatch => {
     dispatch({ type: "GET_ORDERS", payload: response.data });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getOrderBySearch = (orderId, message) => async dispatch => {
+  try {
+    const response = await axios.get(`${API_URL}/getorderbysearch/${orderId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!response.data.idFound) {
+      message.error(response.data.message);
+      return dispatch({ type: "GET_SEARCHED_ORDER", payload: response.data.orders });
+    } else {
+      message.success(response.data.message);
+      dispatch({ type: "GET_SEARCHED_ORDER", payload: [response.data.orders] });
+    }
+  } catch (error) {
+    message.error(error.response.data.message);
   }
 };
