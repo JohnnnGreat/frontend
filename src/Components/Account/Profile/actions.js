@@ -1,6 +1,10 @@
 import axios from "axios";
 import { USER_FETCH_FAILURE, USER_FETCH_SUCCESS } from "./constants";
-const API_URL = "http://localhost:5000/api/users";
+
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/api/users"
+    : "https://backend-commerce-eiue.onrender.com/api/users";
 
 const token = JSON.parse(localStorage.getItem("token"));
 
