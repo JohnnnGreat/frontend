@@ -14,33 +14,34 @@ const UserProfilePage = () => {
       <div className='flex flex-col gap-6 md:flex-row'>
         {/* Sidebar */}
         <div className='flex-2 w-full md:w-[400px]'>
-          <div className='bg-white p-4 rounded-lg shadow-md'>
+          <div className='bg-white p-4 rounded-lg border'>
             <h2 className='text-xl font-semibold mb-4'>Account Menu</h2>
-            <ul className='space-y-2'>
+            <hr className='mt-[.7rem]' />
+            <ul className=' flex flex-col gap-2 '>
               <li>
-                <Link to='/profile' className='hover:underline'>
+                <Link to='/profile' className=' hover:bg-gray-100 inline-block w-full py-2 px-2'>
                   Profile Overview
                 </Link>
               </li>
               <li>
-                <Link to='orders' className='hover:underline'>
+                <Link to='orders' className=' hover:bg-gray-100 inline-block w-full py-2 px-2'>
                   My Orders
                 </Link>
               </li>
               {user?.role === "admin" && (
                 <li>
-                  <Link to='products' className='hover:underline'>
+                  <Link to='products' className=' hover:bg-gray-100 inline-block w-full py-2 px-2'>
                     My Products
                   </Link>
                 </li>
               )}
               <li>
-                <Link to='settings' className='hover:underline'>
+                <Link to='settings' className=' hover:bg-gray-100 inline-block w-full py-2 px-2'>
                   Account Settings
                 </Link>
               </li>
               <li>
-                <button className='hover:underline focus:outline-none'>Logout</button>
+                <button className=' hover:bg-gray-100 inline-block w-full py-2 px-2'>Logout</button>
               </li>
             </ul>
           </div>
