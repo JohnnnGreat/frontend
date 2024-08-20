@@ -3,7 +3,7 @@ import { LOGIN_CHANGE, SET_LOGIN_FORM_ERRORS, SET_LOGIN_LOADING } from "./consta
 const API_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000/api/users"
-    : "https://v-commerceplus.vercel.app/api/users";
+    : "https://backend-commerce-eiue.onrender.com/api/users";
 
 // Login action
 export const loginAction = (credentials, message, navigate) => async dispatch => {

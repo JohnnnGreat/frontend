@@ -1,7 +1,13 @@
 import axios from "axios";
 import { GET_PRODUCT, GET_PRODUCTS, IS_LOADING, SET_ERROR } from "./constants";
 
-const API_URL = "http://localhost:5000/api/products";
+// const API_URL = "http://localhost:5000/api/products";
+
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/api/products"
+    : "https://backend-commerce-eiue.onrender.com/api/products";
+
 const token = JSON.parse(localStorage.getItem("token"));
 
 export const addProductAction = (credentials, navigate, message) => async dispatch => {
