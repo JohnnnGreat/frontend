@@ -70,7 +70,10 @@
     font-optical-sizing: auto;
   }
 }
-
+body {
+  font-family: "Poppins", sans-serif !important;
+  font-optical-sizing: auto;
+}
 input:focus {
   outline: none !important;
   margin: 0 !important;
