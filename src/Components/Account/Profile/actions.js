@@ -1,6 +1,7 @@
 import axios from "axios";
 import { USER_FETCH_FAILURE, USER_FETCH_SUCCESS } from "./constants";
 const API_URL = "http://localhost:5000/api/users";
+
 const token = JSON.parse(localStorage.getItem("token"));
 
 export const fetchUser = userId => {

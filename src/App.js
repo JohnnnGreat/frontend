@@ -21,6 +21,7 @@ import AddProduct from "./Components/Profile/AddProduct";
 import LoginPage from "./Components/Auth/Login";
 import { useSelector } from "react-redux";
 import Loader from "./Components/Shared/Loader";
+
 function App() {
   const isLoggedIn = sessionStorage.getItem("isAuthenticated");
   const isLoading = useSelector(state => state.products.isLoading);
