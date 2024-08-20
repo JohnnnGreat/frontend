@@ -5,13 +5,14 @@ import {
   LOGIN_RESET,
   SET_LOGIN_FORM_ERRORS,
   SET_LOGIN_SUBMITTING,
-  SET_LOGIN_LOADING
-} from './constants';
+  SET_LOGIN_LOADING,
+  LOGOUT
+} from "./constants";
 
 const initialState = {
   loginFormData: {
-    email: '',
-    password: ''
+    email: "",
+    password: ""
   },
   formErrors: {},
   isSubmitting: false,
@@ -46,8 +47,8 @@ export const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         loginFormData: {
-          email: '',
-          password: ''
+          email: "",
+          password: ""
         },
         formErrors: {},
         isSubmitting: false,

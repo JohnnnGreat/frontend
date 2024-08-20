@@ -1,5 +1,11 @@
 import axios from "axios";
-import { LOGIN_CHANGE, LOGOUT, SET_LOGIN_FORM_ERRORS, SET_LOGIN_LOADING } from "./constants";
+import {
+  LOGIN_CHANGE,
+  LOGIN_RESET,
+  LOGOUT,
+  SET_LOGIN_FORM_ERRORS,
+  SET_LOGIN_LOADING
+} from "./constants";
 const API_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:5000/api/users"
@@ -43,6 +49,8 @@ export const signup = (credentials, message, navigate) => async dispatch => {
 
 // Logout action
 export const logout = navigate => dispatch => {
-  dispatch({ type: LOGOUT });
+  localStorage.removeItem("token");
+  dispatch({ type: LOGIN_RESET });
+  dispatch({ type: "USER_RESET" });
   navigate("/login");
 };
