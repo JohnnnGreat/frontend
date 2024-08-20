@@ -1,5 +1,5 @@
-import React from "react";
-import CartMainPage from "../Components/Cart/CartMainPage";
+import React from 'react';
+import CartMainPage from '../Components/Cart';
 
 const CartPage = () => {
   return <CartMainPage />;

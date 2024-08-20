@@ -1,0 +1,7 @@
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const SET_ERROR = "SET_ERROR";
+export const IS_LOADING = "IS_LOADING";
+export const GET_PRODUCT = "GET_PRODUCT";
+export const GET_PRODUCT_BY_ID = "GET_PRODUCT_BY_ID";
+export const GET_SEARCHED_PRODUCTS = "GET_SEARCHED_PRODUCTS";
+

@@ -7,12 +7,13 @@ import {
 } from "../../Services/cartService";
 
 export const getCart = () => async (dispatch) => {
+  console.log("get cart called");
   try {
     const response = await getCartService();
-
+    console.log(response);
     dispatch({ type: "GET_CART_SUCCESS", payload: response });
   } catch (error) {
-    dispatch({ type: "GET_CART_FAIL", payload: error.response.data.message });
+    console.log(error);
   }
 };
 

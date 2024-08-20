@@ -43,6 +43,8 @@ export const getAllProductsService = async () => {
       Authorization: `Bearer ${token}`,
     },
   });
+
+  console.log(response);
   return response.data;
 };
 

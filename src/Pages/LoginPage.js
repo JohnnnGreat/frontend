@@ -57,48 +57,48 @@ const SignupPage = () => {
         <div className="image-display"></div>
         <div className="form">
           <h1 className="text-[#6A6A6A] text-[2rem] my-4 font-semibold">Login</h1>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-2">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[.9rem] font-semibold">Email Address</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Email Address" {...field} />
-                    </FormControl>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-2">
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[.9rem] font-semibold">Email Address</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Email Address" {...field} />
+                      </FormControl>
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-[.9rem] font-semibold">Username</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Password" {...field} />
-                    </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-[.9rem] font-semibold">Username</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Password" {...field} />
+                      </FormControl>
 
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button disabled={isLoading} className="w-full mt-[1rem]" type="submit">
-                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Submit
-              </Button>
-              <p className="text-[14px] font-medium">
-                Yet to Sign Up{" "}
-                <Link className="underline" to="/signup">
-                  Register
-                </Link>
-              </p>
-            </form>
-          </Form>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button disabled={isLoading} className="w-full mt-[1rem]" type="submit">
+                  {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  Submit
+                </Button>
+                <p className="text-[14px] font-medium">
+                  Yet to Sign Up{" "}
+                  <Link className="underline" to="/signup">
+                    Register
+                  </Link>
+                </p>
+              </form>
+            </Form>
         </div>
       </div>
     </div>

@@ -18,9 +18,10 @@ export const addItemToCartService = async ({ productId, quantity }) => {
 };
 
 export const getCartService = async () => {
-  const response = await axios.get(`${API_URL}/`, {
+  const response = await axios.get(`${API_URL}`, {
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
   });
+  console.log(response);
   return response.data;
 };
 

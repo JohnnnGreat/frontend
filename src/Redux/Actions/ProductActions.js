@@ -31,6 +31,7 @@ export const getProductById = (id, message) => async (dispatch) => {
 export const getAllProducts = (message) => async (dispatch) => {
   try {
     const data = await getAllProductsService();
+
     dispatch({ type: "GET_ALL_PRODUCTS", payload: data });
   } catch (error) {
     console.log(error);
@@ -40,7 +41,8 @@ export const getAllProducts = (message) => async (dispatch) => {
 export const getProduct = (id, message) => async (dispatch) => {
   try {
     const data = await getProductService(id);
-    dispatch({ type: GET_PRODUCT, payload: data });
+    dispatch({ type: "GET_PRODUCT", payload: data });
+    console.log(data);
     message.success("Products Details Fetched");
   } catch (error) {
     message.error("Failed to Fetch Product Details");

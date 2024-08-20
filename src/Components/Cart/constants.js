@@ -1,0 +1,7 @@
+export const GET_CART_SUCCESS = 'GET_CART_SUCCESS';
+export const ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
+export const ADD_TO_CART_FAIL = 'ADD_TO_CART_FAIL';
+export const CART_ERROR = 'CART_ERROR';
+export const CLEAR_CART = 'CLEAR_CART';
+export const IS_LOADING = 'IS_LOADING';
+export const REMOVE_FROM_CART_SUCCESS = 'REMOVE_FROM_CART_FAIL';

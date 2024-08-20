@@ -2,6 +2,7 @@
 
 import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, AUTH } from "../types";
 import { loginService, signupService } from "../../Services/AuthService";
+import { persistor } from "../store";
 
 // Login action
 export const login = (credentials, message, navigate) => async (dispatch) => {
@@ -16,6 +17,7 @@ export const login = (credentials, message, navigate) => async (dispatch) => {
     localStorage.setItem("token", JSON.stringify(token));
     message.success(data.message);
     navigate("/");
+
     return data.user;
   } catch (error) {
     console.log(error);
@@ -42,6 +44,8 @@ export const signup = (credentials, message, navigate) => async (dispatch) => {
 
 // Logout action
 export const logout = (navigate) => (dispatch) => {
+  persistor.purge();
   dispatch({ type: LOGOUT });
+  localStorage.removeItem("persist:root");
   navigate("/login");
 };
