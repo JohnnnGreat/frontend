@@ -26,8 +26,6 @@ const MyOrders = () => {
     dispatch(getOrdersByUser());
   };
 
-  const id = "sjdhfieurhfjdkfliiujdks";
-  console.log("id", id.length);
   const handleSubmitSearch = () => {
     dispatch(getOrderBySearch(orderId, message));
   };
