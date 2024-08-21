@@ -1,59 +1,47 @@
-import {
-  GET_PRODUCT,
-  GET_PRODUCT_BY_ID,
-  GET_PRODUCTS,
-  GET_SEARCHED_PRODUCTS,
-  IS_LOADING,
-  SET_ERROR
-} from "./constants";
+import {GET_PRODUCT, GET_PRODUCT_BY_ID, GET_PRODUCTS, GET_SEARCHED_PRODUCTS, IS_LOADING, SET_ERROR} from "./constants";
 
 const initialProductState = {
-  product: {},
-  products: [],
-  error: {},
-  isLoading: false
+    product: {},
+    products: [],
+    error: {},
+    isLoading: false
 };
 
 export const productReducer = (state = initialProductState, action) => {
-  switch (action.type) {
-    case GET_PRODUCTS:
-      return {
-        ...state,
-        products: action.payload
-      };
+    switch (action.type) {
+        case GET_PRODUCTS:
+            return {
+                ...state,
+                products: action.payload
+            };
+        case SET_ERROR:
+            return {
+                ...state,
+                error: action.payload
+            };
 
-    case SET_ERROR:
-      return {
-        ...state,
-        error: action.payload
-      };
+        case IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.payload
+            };
+        case GET_PRODUCT:
+            return {
+                ...state,
+                product: action.payload
+            };
 
-    case IS_LOADING:
-      return {
-        ...state,
-        isLoading: action.payload
-      };
-    case GET_PRODUCT:
-      return {
-        ...state,
-        product: action.payload
-      };
-
-    case GET_PRODUCT_BY_ID:
-      return {
-        ...state,
-        products: action.payload
-      };
-    case GET_SEARCHED_PRODUCTS:
-      const results = state?.products?.filter(product => {
-        return product.name.toLowerCase().includes(action.text.toLowerCase());
-      });
-      console.log(results);
-      return {
-        ...state,
-        products: results
-      };
-    default:
-      return state;
-  }
+        case GET_PRODUCT_BY_ID:
+            return {
+                ...state,
+                products: action.payload
+            };
+        case GET_SEARCHED_PRODUCTS:
+            return {
+                ...state,
+                products: action.payload
+            };
+        default:
+            return state;
+    }
 };
